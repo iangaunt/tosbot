@@ -1,0 +1,16 @@
+{
+    "Coven Leader": {
+        "color": "0xBF5FFF",
+        "emoji": "<:covenleader:1279841062684332033>",
+        "description": "**You are a voodoo master who can control other people's actions.** \n You may choose to **Control** someone each night. \n \n Your victim will **know they are being controlled**. \n With the *Necronomicon*, your victim is dealt a Basic attack /  you gain Basic defense. \n You will **know the role of the player you control.** \n \n **Goal:** Kill all who would oppose the Coven.",
+        "category": "Coven Evil",
+        "unique": true
+    },
+    "Jailor": {
+        "color": "0x7FFF00",
+        "emoji": "<:jailor:1279841418768027732>",
+        "description": "**You are a prison guard who secretly detains suspects.** \n You may choose one person during the day to **Jail** for the night. \n \n You may **anonymously talk** with your prisoner. \n You can choose to **attack** your prisoner. \n The jailed target **can't perform their night ability**. \n If you execute a Town member, you **forfeit** further executions. \n \n **Goal:** Lynch every criminal and evildoer.",
+        "category": "Town Killing",
+        "unique": true
+    }
+}

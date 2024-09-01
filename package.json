@@ -1,0 +1,26 @@
+{
+	"name": "tosbot",
+	"version": "1.0.0",
+	"description": "A Discord bot for playing Town of Salem with your friends.",
+	"main": "index.js",
+	"scripts": {
+		"build": "tsc",
+		"deploy": "node ./dist/deploy.js",
+		"lint": "npx eslint .",
+		"start": "node ./dist/index.js",
+		"up": "npm run build && npm run deploy && npm run start"
+	},
+	"author": "iangaunt",
+	"license": "ISC",
+	"dependencies": {
+		"discord.js": "^14.15.3"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.9.1",
+		"eslint": "^9.9.1",
+		"globals": "^15.9.0",
+		"ts-loader": "^9.5.0",
+		"typescript": "^5.5.4",
+		"typescript-eslint": "^8.3.0"
+	}
+}
