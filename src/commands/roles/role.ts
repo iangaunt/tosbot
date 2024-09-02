@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js")
 
 import rolesJson from "../../../public/roles/roledata.json";
-import RoleEmbed from "../../utils/RoleEmbed"
+import RoleEmbed from "../../utils/visuals/RoleEmbed"
 
 module.exports = {
     data: new SlashCommandBuilder()
