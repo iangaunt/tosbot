@@ -1,0 +1,20 @@
+{
+    "name": "Classic",
+    "roles": [
+        "Sheriff",
+        "Lookout",
+        "Investigator",
+        "Jailor",
+        "Doctor",
+        "Escort",
+        "Medium",
+        "Town Killing",
+        "Town Random",
+        "Godfather",
+        "Mafioso",
+        "Framer",
+        "Serial Killer",
+        "Executioner",
+        "Jester"
+    ]
+}

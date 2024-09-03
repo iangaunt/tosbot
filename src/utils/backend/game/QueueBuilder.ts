@@ -1,5 +1,5 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder, Guild, GuildMember, User } from "discord.js";
-import StatusHandler from "./StatusHandler";
+import RoleHandler from "../server/RoleHandler";
 
 export default class QueueBuilder {
     static currentQueue: QueueBuilder;
@@ -35,13 +35,13 @@ export default class QueueBuilder {
         let queue = await interaction.reply({ 
             embeds: [ queueEmbed ],
             components: [ row ]
-        })
+        });
 
         const collectorFilter = i => i === i;
         const collector = queue.createMessageComponentCollector({ 
             componentType: ComponentType.Button,
             collectorFilter, 
-            time: 2_000 
+            time: 3_000 
         })
         
         collector.on("collect", async (buttonInteraction) => {
@@ -91,7 +91,7 @@ export default class QueueBuilder {
 
             let playerList = "";
             for (let i = 0; i < QueueBuilder.members.length; i++) {
-                playerList += "<@" + QueueBuilder.members[i].id + ">\n"
+                playerList += "`#" + (i + 1) + "` **-** <@" + QueueBuilder.members[i].id + ">\n"
             }
 
             interaction.editReply({
@@ -104,7 +104,7 @@ export default class QueueBuilder {
                 components: []
             })
 
-            StatusHandler.assignStartingRoles();
+            RoleHandler.assignStartingRoles();
         })
     }
 }

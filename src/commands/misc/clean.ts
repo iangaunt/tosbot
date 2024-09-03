@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js")
 
-import TownBuilder from "../../utils/backend/TownBuilder";
-import StatusHandler from "../../utils/backend/StatusHandler";
+import TownBuilder from "../../utils/backend/game/TownBuilder";
+import RoleHandler from "../../utils/backend/server/RoleHandler";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,8 +12,8 @@ module.exports = {
         if (TownBuilder.currentTown != null) {
             TownBuilder.currentTown.clear();
 
-            if (StatusHandler.roles != null) {
-                StatusHandler.cleanupRoles();
+            if (RoleHandler.roles != null) {
+                RoleHandler.cleanupRoles();
             }
 
             await interaction.reply("The town has been cleared!");

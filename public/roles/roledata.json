@@ -1,16 +1,829 @@
 {
+    "Ambusher": {
+        "color": "0xDD0000",
+        "emoji": "<:ambusher:1279841154115833936>",
+        "description": [
+            "**You are a stealthy killer who lies in wait for the perfect moment to strike.** \n",
+            "You may choose to **lie in wait** outside your target's house. \n \n",
+            
+            "You will attack one player who visits your target. \n",
+            "**ALL PLAYERS VISITING YOUR TARGET WILL LEARN YOUR NAME.** \n \n",
+            
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Killing",
+        "unique": true
+    },
+
+    "Amnesiac": {
+        "color": "0x22FFFF",
+        "emoji": "<:amnesiac:1279841265697030224>",
+        "description": [
+            "**You are a trauma patient that does not remember who they were.** \n",
+            "Remember who you were like by **selecting a graveyard role**. \n \n",
+            
+            "When you choose a role, it will be revealed to **all the players in the game**. \n \n",
+            
+            "**Goal:** Remember who you were and complete that role's goal."
+        ],
+        "category": "Neutral Benign",
+        "unique": false
+    },
+
+    "Arsonist": {
+        "color": "0xEE7600",
+        "emoji": "<:arsonist:1279841273729253376>",
+        "description": [
+            "**You are a pyromaniac that wants to burn everyone.** \n",
+            "You may **Douse** someone in gasoline or **ignite** Doused targets. \n \n",
+
+            "**Select yourself** to ignite doused people, **dealing an Unstoppable attack**. \n",
+            "You will douse **anybody that visits you** and **anyone that visits your target**. \n",
+            "If you take no action, you will attempt to clean gasoline off yourself. \n \n",
+
+            "**Goal:** Live to see everyone burn."
+        ],
+        "category": "Neutral Killing",
+        "unique": false
+    },
+
+    "Blackmailer": {
+        "color": "0xDD0000",
+        "emoji": "<:blackmailer:1279841165805486191>",
+        "description": [
+            "**You are an eavesdropper who uses information to keep people quiet.** \n",
+            "Choose one person each night to **blackmail**. \n \n",
+
+            "Blackmailed targets **cannot talk during the day**. \n",
+            "You can read private whispers sent in `#town-square`. \n \n",
+
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Support",
+        "unique": false
+    },
+
+    "Bodyguard": {
+        "color": "0x7FFF00",
+        "emoji": "<:bodyguard:1279841376187711589>",
+        "description": [
+            "**You are an ex-soldier who secretly makes a living by selling protection.** \n",
+            "**Protect** a player from direct attacks at night. \n \n",
+
+            "If your target is directly attacked or is the victim of a harmful visit, **you and the visitor will fight**. \n",
+            "If you **successfully** protect someone, you can **still be Healed**. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Protective",
+        "unique": false
+    },
+
+    "Consigliere": {
+        "color": "0xDD0000",
+        "emoji": "<:consigliere:1279841178782535752>",
+        "description": [
+            "**You are a corrupted investigator who gathers information for the Mafia.** \n",
+            "**Check **one person for their **exact role** each night. \n \n",
+
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Support",
+        "unique": false
+    },
+
+    "Consort": {
+        "color": "0xDD0000",
+        "emoji": "<:consort:1279841187548631060>",
+        "description": [
+            "**You are a beautiful dancer working for organized crime.** \n",
+            "**Distract** someone each night. \n \n",
+
+            "Distraction **blocks your target** from using their role's night ability. \n \n",
+            
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Support",
+        "unique": false
+    },
+
     "Coven Leader": {
         "color": "0xBF5FFF",
         "emoji": "<:covenleader:1279841062684332033>",
-        "description": "**You are a voodoo master who can control other people's actions.** \n You may choose to **Control** someone each night. \n \n Your victim will **know they are being controlled**. \n With the *Necronomicon*, your victim is dealt a Basic attack /  you gain Basic defense. \n You will **know the role of the player you control.** \n \n **Goal:** Kill all who would oppose the Coven.",
+        "description": [
+            "**You are a voodoo master who can control other people's actions.** \n",
+            "You may choose to **Control** someone each night. \n \n",
+
+            "Your victim will **know they are being controlled**. \n",
+            "With the *Necronomicon*, your victim is dealt a Basic attack /  you gain Basic defense. \n",
+            "You will **know the role of the player you control.** \n \n",
+            
+            "**Goal:** Kill all who would oppose the Coven."
+        ],
         "category": "Coven Evil",
         "unique": true
     },
+
+    "Crusader": {
+        "color": "0x7FFF00",
+        "emoji": "<:crusader:1279841385415049357>",
+        "description": [
+            "**You are a divine protector whose skills in combat are unmatched.** \n",
+            "**Protect** one person during the night. \n \n",
+
+            "Protecting your target grants them **Powerful defense**. \n",
+            "**You will know** if your target is attacked. \n",
+            "You **attack one person** who **visits your target** on the same night. \n",
+            "You **do not attack vampires**, but you do block their attacks. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Protective",
+        "unique": false
+    },
+
+    "Disguiser": {
+        "color": "0xDD0000",
+        "emoji": "<:disguiser:1279841196658655293>",
+        "description": [
+            "**You are a master of disguise who can make people appear to be someone else.** \n",
+            "**Disguise** a **mafia member** as a **non-mafia member** to alter their identity. \n \n",
+
+            "The disguised Mafia member will appear to have **the same role** as the **non-Mafia member** to the Investigator and Sheriff. \n",
+            "Your disguised Mafia member will **appear to be the other person** to a Lookout. \n",
+            "When disguised as a Town member, **Mafia visits are disregarded by Spy**. \n \n",
+            
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Deception",
+        "unique": false
+    },
+
+    "Doctor": {
+        "color": "0x7FFF00",
+        "emoji": "<:doctor:1279841393040429119>",
+        "description": [
+            "**You are a surgeon skilled in trauma care who secretly heals people.** \n",
+            "**Heal** one person each night, granting them **Powerful defense**. \n \n",
+            
+            "You may only Heal yourself **once**. \n",
+            "**You will know** if your target is attacked. \n \n",
+
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Protective",
+        "unique": false
+    },
+
+    "Escort": {
+        "color": "0x7FFF00",
+        "emoji": "<:escort:1279841401630232667>",
+        "description": [
+            "**You are a beautiful person skilled in distraction.** \n",
+            "**Distract** someone each night. \n \n",
+            
+            "Distraction **blocks your target** from using their role's night ability. \n",
+            "You **cannot** be role blocked. \n \n",
+
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Support",
+        "unique": false
+    },
+
+    "Executioner": {
+        "color": "0x949797",
+        "emoji": "<:executioner:1279841282025590950>",
+        "description": [
+            "**You are an obsessed lyncher who will stop at nothing to execute your target.** \n",
+            "Trick the Town into **lynching** your target. \n \n",
+            
+            "Your target is **XXXXXXX**. \n",
+            "If your target is **killed at night**, you will become a **Jester**. \n \n",
+
+            "**Goal:** Get your target lynched at any cost."
+        ],
+        "category": "Neutral Evil",
+        "unique": false
+    },
+
+    "Forger": {
+        "color": "0xDD0000",
+        "emoji": "<:forger:1279841204938473606>",
+        "description": [
+            "**You are a crooked lawyer that replaces documents.** \n",
+            "Choose a person and **rewrite their last will** at night. \n \n",
+
+            "If your target dies, their last will is **replaced with your forgery** and their role will be shown as the **role you select to forge**. \n ",
+            "You may only perform **2 forgeries**. \n \n",
+            
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Support",
+        "unique": false
+    },
+
+    "Framer": {
+        "color": "0xDD0000",
+        "emoji": "<:framer:1279841213721350187>",
+        "description": [
+            "**You are a skilled counterfeiter who manipulates information.** \n",
+            "Choose someone to **frame** at night. \n \n",
+
+            "If your target is investigated, **they will appear suspicious**. \n \n",
+            
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Deception",
+        "unique": false
+    },
+    
+    "Godfather": {
+        "color": "0xDD0000",
+        "emoji": "<:godfather:1279841221518430320>",
+        "description": [
+            "**You are the leader of organized crime.** \n",
+            "You may choose to **attack a player** each night. \n \n",
+
+            "If there is a Mafioso, they will **attack the target** instead of you. \n",
+            "You will **appear to be innocent** to the Sheriff. \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Killing",
+        "unique": true
+    },
+
+    "Guardian Angel": {
+        "color": "0xFFFFFF",
+        "emoji": "<:guardianangel:1279841290212606178>",
+        "description": [
+            "**You are an Angel whose only goal is the protection of your charge.** \n",
+            "Keep your target **alive**. \n \n",
+
+            "Your target is **XXXXXXX**. \n",
+            "If your target is killed, you will become a **Survivor** without any **bulletproof vests**. \n",
+            "Twice a game, you may **Heal** and **Purge** your target. This may be **done from the grave**. Watching over a player **ignores Jail**. \n \n",
+            
+            "**Goal:** Keep your target alive until the end of the game."
+        ],
+        "category": "Neutral Benign",
+        "unique": false
+    },
+
+    "Hex Master": {
+        "color": "0xBF5FFF",
+        "emoji": "<:hexmaster:1279841077116797090>",
+        "description": [
+            "**You are a spell slinger with a proficiency for hexes and curses.** \n",
+            "You may choose to **Hex** a player each night. \n \n",
+
+            "With the *Necronomicon*, you gain **Astral and Basic** attacks. \n",
+            "Players are **still Hexed** when you have the Necronomicon. \n",
+            "**WHEN ALL NON-COVEN MEMBERS ARE HEXED, THEY WILL BE DEALT AN UNSTOPPABLE ATTACK AT NIGHT.** \n \n",
+            
+            "**Goal:** Kill all who would oppose the Coven."
+        ],
+        "category": "Coven Evil",
+        "unique": true
+    },
+
+    "Hypnotist": {
+        "color": "0xDD0000",
+        "emoji": "<:hypnotist:1279841229512638595>",
+        "description": [
+            "**You are a skilled hypnotist who can alter the perception of others.** \n",
+            "You may sneak into a players house at night and **plant a memory**. \n \n",
+
+            "A planted memory will **confuse the player**. \n",
+            "Hypnotized players will see a **false message** in their house chat. \n \n",
+
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Deception",
+        "unique": false
+    },
+
+    "Investigator": {
+        "color": "0x7FFF00",
+        "emoji": "<:investigator:1279841410287141077>",
+        "description": [
+            "**You are a private eye who secretly gathers information.** \n",
+            "**Investigate** one person each night for a **clue** to their role. \n \n",
+
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Investigative",
+        "unique": false
+    },
+
+    "Janitor": {
+        "color": "0xDD0000",
+        "emoji": "<:janitor:1279841238169686097>",
+        "description": [
+            "**You are a sanitation expert working for organized crime.** \n",
+            "Choose a person to **clean** at night. \n \n",
+
+            "If your target dies, their role and last will **won't be revealed** to the Town. \n",
+            "Only **you** will see the **cleaned target's role** and last **will**. \n",
+            "You may only perform **3 cleanings**. \n \n",
+
+            "*If there are no kill capable Mafia roles left, you will become a Mafioso.* \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Deception",
+        "unique": false
+    },
+
     "Jailor": {
         "color": "0x7FFF00",
         "emoji": "<:jailor:1279841418768027732>",
-        "description": "**You are a prison guard who secretly detains suspects.** \n You may choose one person during the day to **Jail** for the night. \n \n You may **anonymously talk** with your prisoner. \n You can choose to **attack** your prisoner. \n The jailed target **can't perform their night ability**. \n If you execute a Town member, you **forfeit** further executions. \n \n **Goal:** Lynch every criminal and evildoer.",
+        "description": [
+            "**You are a prison guard who secretly detains suspects.** \n",
+            "You may choose one person during the day to **Jail** for the night. \n \n",
+            
+            "You may **anonymously talk** with your prisoner. \n",
+            "You can choose to **attack** your prisoner.\n",
+            "The jailed target **can't perform their night ability**. \n",
+            "If you execute a Town member, you **forfeit** further executions. \n \n",
+
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
         "category": "Town Killing",
+        "unique": true
+    },
+
+    "Jester": {
+        "color": "0xF7B3DA",
+        "emoji": "<:jester:1279841298643288135>",
+        "description": [
+            "**You are a crazed lunatic whose life goal is to be publicly executed.** \n",
+            "Trick the Town into **voting against you**. \n \n",
+            
+            "If you are lynched, you will attack one of your **guilty** or **abstaining voters** the following night with an **Unstoppable attack**. \n \n",
+
+            "**Goal:** Get yourself lynched by any means necessary."
+        ],
+        "category": "Neutral Evil",
+        "unique": false
+    },
+
+    "Juggernaut": {
+        "color": "0xA12B56",
+        "emoji": "<:juggernaut:1279841307010797568>",
+        "description": [
+            "**You are an unstoppable force that only gets stronger with each kill.** \n",
+            "You may choose to **attack a player** on **full moon nights**. **(0 kills)** \n \n",
+            
+            "With each kill your powers **grow**. **(0 - 2 kills)** \n",
+            "You may (now) attack **every night**. **(1st kill)** \n",
+            "You (now) **kill all your target's visitors as well** when you attack. **(2nd kill)** \n",
+            "You now **ignore all effects** that would **protect a player**. **(3rd kill)** \n \n",
+
+            "You reach your **ultimate power** at **3** kills. \n \n",
+
+            "**Goal:** Kill everyone who would oppose you."
+        ],
+        "category": "Neutral Killing",
+        "unique": true
+    },
+
+    "Lookout": {
+        "color": "0x7FFF00",
+        "emoji": "<:lookout:1279841438141644931>",
+        "description": [
+            "**You are an eagle-eyed observer, camping outside houses to gain information.** \n",
+            "**Watch** one person at night to **see who visits them**. \n \n",
+
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Investigative",
+        "unique": false
+    },
+
+    "Mafioso": {
+        "color": "0xDD0000",
+        "emoji": "<:mafioso:1279841247707795538>",
+        "description": [
+            "**You are a member of organized crime, trying to work your way to the top.** \n",
+            "**Carry out** the Godfather's orders. \n \n",
+
+            "You can **choose your attack** if the Godfather **doesn't give you orders**. \n",
+            "If the Godfather dies, **you will become the next Godfather**. \n \n",
+            
+            "**Goal:** Kill anyone that will not submit to the Mafia."
+        ],
+        "category": "Mafia Killing",
+        "unique": true
+    },
+
+    "Mayor": {
+        "color": "0x7FFF00",
+        "emoji": "<:mayor:1279841447100813362>",
+        "description": [
+            "**You are the leader of the town.** \n",
+            "You may **reveal yourself** as the Mayor of the Town **during the day**. \n \n",
+
+            "Once you have revealed yourself as Mayor, your vote counts **as 3 votes**. \n",
+            "You **may not be Healed** once you have revealed yourself. \n",
+            "Once revealed, **you can't whisper, or be whispered to.** \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Support",
+        "unique": true
+    },
+
+    "Medium": {
+        "color": "0x7FFF00",
+        "emoji": "<:medium:1279841455686418555>",
+        "description": [
+            "**You are a secret psychic who talks with the dead.** \n",
+            "You can **speak to the dead** each night you are alive. \n \n",
+
+            "When dead, **speak to a living person** at night. \n",
+            "You may only speak to a living person **once**. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Support",
+        "unique": false
+    },
+
+    "Medusa": {
+        "color": "0xBF5FFF",
+        "emoji": "<:medusa:1279841088168792084>",
+        "description": [
+            "**You are a snake haired monster with a gaze of stone.** \n",
+            "You may choose to **Stone Gaze** all visitors at night. \n \n",
+
+            "You may choose to stone gaze **3** times. \n",
+            "With the *Necronomicon*, you may **visit players** and turn them to stone. \n \n",
+            
+            "**Goal:** Kill all who would oppose the Coven."
+        ],
+        "category": "Coven Evil",
+        "unique": true
+    },
+
+    "Necromancer": {
+        "color": "0xBF5FFF",
+        "emoji": "<:necromancer:1279841104589754480>",
+        "description": [
+            "**You are an evil sorceress who has a grudge against the town.** \n",
+            "You may **reanimate a dead player** and **use their ability** on a player. \n \n",
+
+            "Create **zombies** from dead players who use their abilities on your **second target**. \n",
+            "Each zombie can be used **once** before it rots. \n",
+            "With the *Necronomicon*, select yourself to **summon a ghoul** to **Basic attack your target**. \n \n",
+            
+            "**Goal:** Kill all who would oppose the Coven."
+        ],
+        "category": "Coven Evil",
+        "unique": true
+    },
+
+    "Pestilence": {
+        "color": "0x424242",
+        "emoji": "<:pestilence:1279841314401157143>",
+        "description": [
+            "**You are a horseman of the apocalypse who feeds off of disease.** \n",
+            "You may choose to **Rampage** at a player's house each night, killing all visitors. \n \n",
+
+            "You will attack **anyone who visits you** or **your target**. \n",
+            "You **cannot be role blocked or controlled**. \n",
+            "If you are jailed, you will **attack the Jailor**. \n \n",
+            
+            "**Goal:** Conquer the town, and then the world."
+        ],
+        "category": "Neutral Chaos",
+        "unique": true
+    },
+
+    "Pirate": {
+        "color": "0xEDC240",
+        "emoji": "<:pirate:1279841322655809620>",
+        "description": [
+            "**You are a swashbuckler with an obsession for gold.** \n",
+            "Choose a player to **plunder** each night. \n \n",
+
+            "When you plunder a player, you will **duel the player** for their valuables. \n",
+            "If the player defends against your attack, **you get no loot**. \n \n",
+            
+            "**Goal:** Successfully plunder two players."
+        ],
+        "category": "Neutral Chaos",
+        "unique": true
+    },
+
+    "Plaguebearer": {
+        "color": "0xCFFF63",
+        "emoji": "<:plaguebearer:1279841329978937459>",
+        "description": [
+            "**You are an acolyte of Pestilence who spreads disease among the town.** \n",
+            "You may choose to **infect** a player with the **Plague** each night. \n \n",
+
+            "All your **target's visitors** and players who **visit you** will be infected. \n",
+            "Players **will not know** they have been infected. \n",
+            "**WHEN ALL LIVING PLAYERS ARE INFECTED, YOU WILL BECOME PESTILENCE.** \n \n",
+            
+            "**Goal:** Infect all living players and become Pestilence."
+        ],
+        "category": "Neutral Chaos",
+        "unique": true
+    },
+
+    "Poisoner": {
+        "color": "0xBF5FFF",
+        "emoji": "<:poisoner:1279841114773258240>",
+        "description": [
+            "**You are a patient killer with a knowledge of poisons.** \n",
+            "You may choose to **poison** a player each night. \n \n",
+
+            "Your poisons take **one day** to take effect. \n",
+            "Poison can be **removed by Heals**. \n",
+            "With the *Necronomicon*, your poison can **no longer be Healed**. \n \n",
+            
+            "**Goal:** Kill all who would oppose the Coven."
+        ],
+        "category": "Coven Evil",
+        "unique": true
+    },
+
+    "Potion Master": {
+        "color": "0xBF5FFF",
+        "emoji": "<:potionmaster:1279841124382412831>",
+        "description": [
+            "**You are an experienced alchemist with potent recipes for potions.** \n",
+            "You may choose to **use a potion** on a player **each night**. \n \n",
+
+            "You may choose to use a **Heal**, **Reveal**, or **Attack** potion on a player.  \n",
+            "Each potion has a **three day cooldown**. \n",
+            "With the *Necronomicon*, your potions **no longer have a cooldown**. \n \n",
+            
+            "**Goal:** Kill all who would oppose the Coven."
+        ],
+        "category": "Coven Evil",
+        "unique": true
+    },
+
+    "Psychic": {
+        "color": "0x7FFF00",
+        "emoji": "<:psychic:1279841463957585954>",
+        "description": [
+            "**You are a powerful seer with a gift for finding one's secrets.** \n",
+            "Receive a **vision** every night. \n \n",
+
+            "On odd nights you will have a vision of three players -- at least one will be Evil. \n",
+            "On even nights you will have a vision of two players -- at least one will be Good. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Investigative",
+        "unique": false
+    },
+
+    "Retributionist": {
+        "color": "0x7FFF00",
+        "emoji": "<:retributionist:1279841472090210487>",
+        "description": [
+            "**You are a powerful mystic that can raise the true-hearted dead.** \n",
+            "You may **raise a dead Town member** and **use their ability** on a player. \n \n",
+
+            "Create **zombies** from **dead true-hearted Town players**. \n",
+            "Use their abilities on your **second target**. \n",
+            "Each zombie can be used **once** before it rots. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Support",
+        "unique": true
+    },
+
+    "Serial Killer": {
+        "color": "0x336EFF",
+        "emoji": "<:serialkiller:1279841338501627924>",
+        "description": [
+            "**You are a psychotic criminal who wants everyone to die.** \n",
+            "You may choose to **attack a player** each night. \n \n",
+
+            "If you are role blocked, you will **attack the role blocker in addition to your target**. \n",
+            "Role blockers that target you will be mutilated, making their last will **unreadable**. \n",
+            "You can choose to be **cautious** and **not kill role blockers**. \n \n",
+            
+            "**Goal:** Kill everyone who would oppose you."
+        ],
+        "category": "Neutral Killing",
+        "unique": false
+    },
+
+    "Sheriff": {
+        "color": "0x7FFF00",
+        "emoji": "<:sheriff:1279841480327954453>",
+        "description": [
+            "**You are the law enforcer of the town forced into hiding from threat of murder.** \n",
+            "**Interrogate** one person each night for **suspicious activity**. \n \n",
+
+            "You will know if your target is **suspicious**. \n",
+            "The **Godfather and Vampires** will appear **innocent** regardless. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Investigative",
+        "unique": false
+    },
+
+    "Spy": {
+        "color": "0x7FFF00",
+        "emoji": "<:spy:1279841489190391808>",
+        "description": [
+            "**You are a talented watcher who keeps track of evil in the Town.** \n",
+            "You may **bug** a player's house to **see what happens to them** that night. \n \n",
+
+            "You will know who the **Mafia** and **Coven** visit each night. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Investigative",
+        "unique": false
+    },
+
+    "Survivor": {
+        "color": "0xDDDD00",
+        "emoji": "<:survivor:1279841345795522683>",
+        "description": [
+            "**You are a neutral character who just wants to live.** \n",
+            "Put on a **bulletproof vest** at night. \n \n",
+
+            "Putting on a bulletproof vest gives you **Basic defense**. \n",
+            "You can only use the bulletproof vest **4** times. \n \n",
+            
+            "**Goal:** Live until the end of the game, by any means necessary."
+        ],
+        "category": "Neutral Benign",
+        "unique": false
+    },
+
+    "Tracker": {
+        "color": "0x7FFF00",
+        "emoji": "<:tracker:1279841497608355992>",
+        "description": [
+            "**You are a skilled tracker who will follow their prey to any destination.** \n",
+            "**Track** one person at night to **see who they visit**. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Investigative",
+        "unique": false  
+    },
+
+    "Transporter": {
+        "color": "0x7FFF00",
+        "emoji": "<:transporter:1279841506617987153>",
+        "description": [
+            "**Your job is to transport people without asking any questions.** \n",
+            "Choose two people to **transport** at night. \n \n",
+
+            "Transporting two people **swaps all targets against them**. \n",
+            "**You may transport yourself**. \n",
+            "Your targets **will know** they were transported. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Support",
+        "unique": false
+    },
+
+    "Trapper": {
+        "color": "0x7FFF00",
+        "emoji": "<:trapper:1279841514620457041>",
+        "description": [
+            "**You are an intelligent woodsman with a knack for traps.** \n",
+            "You may **set up a Trap** at another player's house. \n \n",
+
+            "Traps take **one day** to build, and only **one trap can be set** at once. \n",
+            "Traps can be **torn down** by **selecting yourself** at night. \n",
+            "If someone attacks your target, your trap will **ensnare them**, dealing a **Powerful attack** to one attacker. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Support",
+        "unique": false
+    },
+
+    "Vampire": {
+        "color": "0x7B8968",
+        "emoji": "<:vampire:1279841354285060118>",
+        "description": [
+            "**You are among the undead who want to turn others at night.** \n",
+            "**Convert** others to Vampires at night. \n \n",
+
+            "Vampires **vote at night** to **bite** a target. \n",
+            "The youngest Vampire will **visit the target at night**. \n",
+            "If they are a **Town member**, they will be **converted to a Vampire**. If not, they will be attacked with a **Basic attack**. \n \n",
+            
+            "**Goal:** Convert everyone who would oppose you."
+        ],
+        "category": "Neutral Chaos",
+        "unique": false
+    },
+
+    "Vampire Hunter": {
+        "color": "0x7FFF00",
+        "emoji": "<:vampirehunter:1279841521725603911>",
+        "description": [
+            "**You will do whatever it takes to eliminate the Vampires.** \n",
+            "**Check** for Vampires each night. \n \n",
+
+            "If you visit a Vampire or a Vampire visits you, **you will attack them**. \n",
+            "If all the Vampires die, you will become a Vigilante with two bullets. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Support",
+        "unique": false   
+    },
+
+    "Veteran": {
+        "color": "0x7FFF00",
+        "emoji": "<:veteran:1279841530882035876>",
+        "description": [
+            "**You are a paranoid war hero who will shoot anyone who visits you.** \n",
+            "Decide if you will go on **alert**. \n \n",
+
+            "While on alert, you gain **Basic Defense** and you will deliver a **Powerful attack** to **anyone who visits you**. \n",
+            "You can only go on alert **3** times. \n",
+            "You **cannot** be role blocked. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Killing",
+        "unique": true
+    },
+
+    "Vigilante": {
+        "color": "0x7FFF00",
+        "emoji": "<:vigilante:1279841539266183168>",
+        "description": [
+            "**You are a militant cop who takes the law into your own hands.** \n",
+            "Choose to take justice into your own hands and **shoot someone**. \n \n",
+
+            "If you **shoot another Town member**, you will **commit suicide** over the guilt. \n",
+            "You can only shoot your gun **3** times. \n \n",
+            
+            "**Goal:** Lynch every criminal and evildoer."
+        ],
+        "category": "Town Killing",
+        "unique": false   
+    },
+
+    "Werewolf": {
+        "color": "0x9F703A",
+        "emoji": "<:werewolf:1279841360823844950>",
+        "description": [
+            "**You are a normal citizen who transforms during the full moon.** \n",
+            "Transform into a **Werewolf** during the full moon. \n \n",
+
+            "You will **Rampage** at a player's house, attacking them and all their visitors. \n",
+            "If you do not select a target, you will **stay home and Rampage at your home**. \n \n",
+            
+            "**Goal:** Kill everyone who would oppose you."
+        ],
+        "category": "Neutral Killing",
+        "unique": true
+    },
+
+    "Witch": {
+        "color": "0xBF5FFF",
+        "emoji": "<:witch:1279841133853278208>",
+        "description": [
+            "**You are a voodoo master who can control other people's actions.** \n",
+            "You can **Control** someone each night. \n \n",
+
+            "You have a mystical barrier that grants you **Basic defense until you are attacked**.  \n",
+            "You will **know the role** of the player you Control. \n",
+            "**THIS ROLE IS UNAVAILABLE IF THERE IS A COVEN MEMBER IN THE GAME.** \n \n",
+            
+            "**Goal:** Survive to see the Town lose the game."
+        ],
+        "category": "Neutral Evil",
         "unique": true
     }
 }
