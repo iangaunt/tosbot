@@ -1,10 +1,11 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder, Guild, GuildMember, User } from "discord.js";
 import ServerRoleHandler from "../server/ServerRoleHandler";
 import PlayerRoleHandler from "./PlayerRoleHandler";
+import Game from "../../../global/Game";
 
 export default class QueueBuilder {
-    static currentQueue: QueueBuilder;
-    static members: Array<GuildMember>;
+    currentQueue: QueueBuilder;
+    members: Array<GuildMember>;
     players: number;
 
     guild: Guild;
@@ -15,7 +16,7 @@ export default class QueueBuilder {
     constructor(guild: Guild) {
         this.guild = guild;
         this.players = 0;
-        QueueBuilder.members = [];
+        this.members = [];
     }
 
     async create(interaction) {
@@ -50,12 +51,12 @@ export default class QueueBuilder {
         
         collector.on("collect", async (buttonInteraction) => {
             if (buttonInteraction.customId === "join") {
-                if (QueueBuilder.members.indexOf(buttonInteraction.member) > -1) {
+                if (this.members.indexOf(buttonInteraction.member) > -1) {
                     await buttonInteraction.reply({ content: 'You are already in the queue.', ephemeral: true });
                     return;
                 } else {
                     this.players++;
-                    QueueBuilder.members.push(buttonInteraction.member);
+                    this.members.push(buttonInteraction.member);
                 }
 
                 queueEmbed.setTitle(`The town is looking for new residents! **[${this.players} / 15]**`)
@@ -69,13 +70,13 @@ export default class QueueBuilder {
             } 
             
             if (buttonInteraction.customId === "leave") {
-                if (QueueBuilder.members.indexOf(buttonInteraction.member) == -1) {
+                if (this.members.indexOf(buttonInteraction.member) == -1) {
                     await buttonInteraction.reply({ content: 'You are not currently in the queue.', ephemeral: true });
                     return;
                 } else {
                     this.players--;
-                    const idPos = QueueBuilder.members.indexOf(buttonInteraction.member);
-                    QueueBuilder.members.splice(idPos, 1);
+                    const idPos = this.members.indexOf(buttonInteraction.member);
+                    this.members.splice(idPos, 1);
                 }
 
                 queueEmbed.setTitle(`The town is looking for new residents! **[${this.players} / 15]**`)
@@ -94,8 +95,8 @@ export default class QueueBuilder {
             leave.setDisabled(true);
 
             let playerList = "";
-            for (let i = 0; i < QueueBuilder.members.length; i++) {
-                playerList += "`#" + (i + 1) + "` **-** <@" + QueueBuilder.members[i].id + ">\n"
+            for (let i = 0; i < this.members.length; i++) {
+                playerList += "`#" + (i + 1) + "` **-** <@" + this.members[i].id + ">\n"
             }
 
             interaction.editReply({
@@ -108,9 +109,8 @@ export default class QueueBuilder {
                 components: []
             })
 
-            ServerRoleHandler.assignStartingRoles();
+            Game.serverRoleHandler.assignStartingRoles();
             this.assignPlayerRoles(this.rolelist);
-            console.log(PlayerRoleHandler.playerRoleMap);
         })
     }
 
@@ -119,7 +119,7 @@ export default class QueueBuilder {
     }
 
     assignPlayerRoles(rolelist: Array<string>) {
-        const playerRoles = new PlayerRoleHandler(this.guild, QueueBuilder.members, rolelist);
+        const playerRoles = new PlayerRoleHandler(this.guild, this.members, rolelist);
         this.playerRoleHandler = playerRoles;
     }
 }

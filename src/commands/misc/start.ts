@@ -8,6 +8,7 @@ import TownBuilder from "../../utils/backend/game/TownBuilder";
 
 import rolelists from "../../../public/roles/rolelists.json"
 import PlayerRoleHandler from "../../utils/backend/game/PlayerRoleHandler";
+import Game from "../../global/Game";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -17,23 +18,24 @@ module.exports = {
     async execute(interaction) {
         const guild: Guild = interaction.guild;
         
-        if (TownBuilder.currentTown == null) {
-            const rolelistGenerator = new RolelistGenerator();
-            const rolelist = rolelistGenerator.generateRoleList(rolelists.classic);
+        if (Game.townBuilder == null) {
+            const g = Game;
+            g.rolelistGenerator = new RolelistGenerator();
+            g.setRolelist(g.rolelistGenerator.generateRoleList(rolelists.classic));
 
-            const serverRoles = new ServerRoleHandler(guild);
-            ServerRoleHandler.createRoles();
+            g.serverRoleHandler = new ServerRoleHandler(guild);
+            g.serverRoleHandler.createRoles();
             
-            const town = new TownBuilder(guild); 
-            town.create();
+            g.townBuilder = new TownBuilder(guild); 
+            g.townBuilder.create();
 
-            const queue = new QueueBuilder(guild);
-            queue.setRolelist(rolelist);
-            await queue.create(interaction);
+            g.queueBuilder = new QueueBuilder(guild);
+            g.queueBuilder.setRolelist(rolelists.classic.roles);
+            await g.queueBuilder.create(interaction);
 
             await new Promise(f => setTimeout(f, 3000));
 
-            console.log("queue done");
+            g.playerRoleHandler = g.queueBuilder.playerRoleHandler;
         } else {
             await interaction.reply("A town is currently in play / in the server. If you are done, consider `/clear`ing it!");
         }
