@@ -25,7 +25,6 @@ export default class ChannelHandler {
     }
 
     static async createChannelPerms(guild: Guild, name: string, channelType, parent: string, permissionOverwrites) {
-        console.log(name);
         return guild.channels.create({
             name: name,
             type: channelType,

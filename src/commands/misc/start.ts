@@ -2,15 +2,12 @@ const { SlashCommandBuilder } = require("discord.js")
 import { Client, GatewayIntentBits, Guild, Role } from "discord.js";
 
 import QueueBuilder from "../../utils/backend/game/QueueBuilder";
-import RoleHandler from "../../utils/backend/server/RoleHandler";
-import TownBuilder from "../../utils/backend/game/TownBuilder";
+import ServerRoleHandler from "../../utils/backend/server/ServerRoleHandler";
 import RolelistGenerator from "../../utils/backend/game/RolelistGenerator";
+import TownBuilder from "../../utils/backend/game/TownBuilder";
 
-import all_any from "../../../public/roles/rolelists/all_any.json"
-import classic from "../../../public/roles/rolelists/classic.json"
-import test from "../../../public/roles/rolelists/test.json"
-
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+import rolelists from "../../../public/roles/rolelists.json"
+import PlayerRoleHandler from "../../utils/backend/game/PlayerRoleHandler";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -21,17 +18,22 @@ module.exports = {
         const guild: Guild = interaction.guild;
         
         if (TownBuilder.currentTown == null) {
-            const roles = new RoleHandler(guild);
-            RoleHandler.createRoles();
+            const rolelistGenerator = new RolelistGenerator();
+            const rolelist = rolelistGenerator.generateRoleList(rolelists.classic);
+
+            const serverRoles = new ServerRoleHandler(guild);
+            ServerRoleHandler.createRoles();
             
             const town = new TownBuilder(guild); 
             town.create();
 
-            //const queue = new QueueBuilder(guild);
-            //queue.create(interaction);
+            const queue = new QueueBuilder(guild);
+            queue.setRolelist(rolelist);
+            await queue.create(interaction);
 
-            //const rolelist = new RolelistGenerator();
-            //console.log(rolelist.generateRoleList(test));
+            await new Promise(f => setTimeout(f, 3000));
+
+            console.log("queue done");
         } else {
             await interaction.reply("A town is currently in play / in the server. If you are done, consider `/clear`ing it!");
         }

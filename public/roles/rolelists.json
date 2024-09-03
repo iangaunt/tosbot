@@ -1,0 +1,38 @@
+{
+    "all_any": {
+        "name": "All Any",
+        "roles": [
+            "Any", "Any", "Any", "Any", "Any",
+            "Any", "Any", "Any", "Any", "Any",
+            "Any", "Any", "Any", "Any", "Any"
+        ]
+    },
+    "classic": {
+        "name": "Classic",
+        "roles": [
+            "Sheriff",
+            "Lookout",
+            "Investigator",
+            "Jailor",
+            "Doctor",
+            "Escort",
+            "Medium",
+            "Town Killing",
+            "Town Random",
+            "Godfather",
+            "Mafioso",
+            "Framer",
+            "Serial Killer",
+            "Executioner",
+            "Jester"
+        ]
+    },
+    "test": {
+        "name": "Test",
+        "roles": [
+            "Jailor", "Jailor", "Jailor", "Jailor", "Jailor",
+            "Jailor", "Jailor", "Jailor", "Jailor", "Jailor",
+            "Jailor", "Jailor", "Jailor", "Jailor", "Jailor"
+        ]
+    }
+}

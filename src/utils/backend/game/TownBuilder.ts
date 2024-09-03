@@ -1,16 +1,16 @@
 import { ChannelType, Guild, PermissionsBitField } from "discord.js";
 import QueueBuilder from "./QueueBuilder";
 import ChannelHandler from "../server/ChannelHandler";
-import RoleHandler from "../server/RoleHandler";
+import ServerRoleHandler from "../server/ServerRoleHandler";
 
 export default class TownBuilder {
     static currentTown: TownBuilder;
-    createdChannels: Array<string>;
+    createdChannels: Map<string, string>;
     guild: Guild;
 
     constructor(guild: Guild) {
         this.guild = guild;
-        this.createdChannels = [];
+        this.createdChannels = new Map<string, string>();
     }
 
     async createChannel(name: string, type) {
@@ -25,19 +25,19 @@ export default class TownBuilder {
 
         const town = await ChannelHandler.createCategory(this.guild, "Town");
         const townID = town.id;
-        this.createdChannels.push(townID);
+        this.createdChannels.set("town", townID);
 
         const townSquare = await ChannelHandler.createChannelPerms(
             this.guild, "town-square", 
             ChannelType.GuildText, townID,
             [
                 {
-                    id: (await RoleHandler.roles.get("alive")).id,
+                    id: (await ServerRoleHandler.roles.get("alive")).id,
                     allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
                     deny: [PermissionsBitField.Flags.AttachFiles]
                 },
                 {
-                    id: (await RoleHandler.roles.get("dead")).id,
+                    id: (await ServerRoleHandler.roles.get("dead")).id,
                     allow: [PermissionsBitField.Flags.ViewChannel],
                     deny: [PermissionsBitField.Flags.SendMessages]
                 },
@@ -48,18 +48,18 @@ export default class TownBuilder {
             ]
         );
 
-        this.createdChannels.push(townSquare.id);
+        this.createdChannels.set("town-square", townSquare.id);
 
         const afterlife = await ChannelHandler.createChannelPerms(
             this.guild, "afterlife", 
             ChannelType.GuildText, townID,
             [
                 {
-                    id: (await RoleHandler.roles.get("alive")).id,
+                    id: (await ServerRoleHandler.roles.get("alive")).id,
                     deny: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages]
                 },
                 {
-                    id: (await RoleHandler.roles.get("dead")).id,
+                    id: (await ServerRoleHandler.roles.get("dead")).id,
                     allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
                     deny: [PermissionsBitField.Flags.AttachFiles]
                 },
@@ -69,11 +69,11 @@ export default class TownBuilder {
                 }
             ]
         );
-        this.createdChannels.push(afterlife.id);
+        this.createdChannels.set("afterlife", afterlife.id);
     
         const houses = await ChannelHandler.createCategory(this.guild, "Houses");
         const housesID = houses.id;
-        this.createdChannels.push(housesID);
+        this.createdChannels.set("houses", housesID);
 
         for (let i = 1; i <= 3; i++) {
             const house = await ChannelHandler.createChannelPerms(
@@ -81,7 +81,7 @@ export default class TownBuilder {
                 ChannelType.GuildText, housesID,
                 [
                     {
-                        id: (await RoleHandler.roles.get("player" + i)).id,
+                        id: (await ServerRoleHandler.roles.get("player" + i)).id,
                         allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
                         deny: [PermissionsBitField.Flags.CreateInstantInvite]
                     },
@@ -91,15 +91,17 @@ export default class TownBuilder {
                     }
                 ]
             );
-            this.createdChannels.push(house.id);
+            this.createdChannels.set("house-" + i, house.id);
         }
     }
 
     async clear() {
-        for (let i = 0; i < this.createdChannels.length; i++) {
-            this.guild.channels.delete(this.createdChannels[i], "The game is over / was forcefully reset.");
+        const ids = Array.from(this.createdChannels.values());
+        for (let i = 0; i < ids.length; i++) {
+            this.guild.channels.delete(ids[i], "The game is over / was forcefully reset.");
             TownBuilder.currentTown = null;
             QueueBuilder.currentQueue = null;
         }
+        this.createdChannels = new Map<string, string>();
     }
 }

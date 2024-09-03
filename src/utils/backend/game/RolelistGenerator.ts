@@ -14,6 +14,7 @@ export default class RolelistGenerator {
         this.availabilityList = RoleFolder.generateAvailabilityMap();
         const rolelistPriorityOrder: Array<Array<string>> = [[], [], [], []];
 
+        // TODO: add hard limits on mafia + coven + vampire
         let mafiaAmount: number = 0;
         let covenAmount: number = 0;
         let vampireAmount: number = 0;
@@ -131,9 +132,9 @@ export default class RolelistGenerator {
                 vampireHunterIndexCheck = rolelist.indexOf("Vampire Hunter");
             }
         }
-    
-        let mafiaKillingCheck = remainingRoles.indexOf("Godfather") == -1 && remainingRoles.indexOf("Mafioso") == -1;;
-        if (mafiaKillingCheck == true) {
+
+        let mafiaKillingCheck = remainingRoles.indexOf("Godfather") == -1 || remainingRoles.indexOf("Mafioso") == -1;
+        if (mafiaKillingCheck == false) {
             let mafiaIndex = -1;
 
             for (let i = 0; i < rolelist.length; i++) {
@@ -147,7 +148,18 @@ export default class RolelistGenerator {
             remainingRoles.splice(remainingRoles.indexOf("Mafioso"), 1);
         }
 
+        this.shuffle(rolelist);
         return rolelist;
+    }
+
+    shuffle(arr: Array<string>) {
+        for (let i = 0; i < arr.length; i++) {
+            let random = Math.floor(Math.random() * arr.length);
+
+            let temp = arr[i];
+            arr[i] = arr[random];
+            arr[random] = temp;
+        }
     }
 
     generateRandomNonUnique() {

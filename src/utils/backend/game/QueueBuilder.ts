@@ -1,5 +1,6 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder, Guild, GuildMember, User } from "discord.js";
-import RoleHandler from "../server/RoleHandler";
+import ServerRoleHandler from "../server/ServerRoleHandler";
+import PlayerRoleHandler from "./PlayerRoleHandler";
 
 export default class QueueBuilder {
     static currentQueue: QueueBuilder;
@@ -7,6 +8,9 @@ export default class QueueBuilder {
     players: number;
 
     guild: Guild;
+    private rolelist: Array<string>;
+    
+    playerRoleHandler: PlayerRoleHandler;
 
     constructor(guild: Guild) {
         this.guild = guild;
@@ -104,7 +108,18 @@ export default class QueueBuilder {
                 components: []
             })
 
-            RoleHandler.assignStartingRoles();
+            ServerRoleHandler.assignStartingRoles();
+            this.assignPlayerRoles(this.rolelist);
+            console.log(PlayerRoleHandler.playerRoleMap);
         })
+    }
+
+    setRolelist(rolelist: Array<string>) {
+        this.rolelist = rolelist;
+    }
+
+    assignPlayerRoles(rolelist: Array<string>) {
+        const playerRoles = new PlayerRoleHandler(this.guild, QueueBuilder.members, rolelist);
+        this.playerRoleHandler = playerRoles;
     }
 }
