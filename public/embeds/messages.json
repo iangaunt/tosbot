@@ -13,5 +13,41 @@
             "It's getting late! It is now nighttime in the town of Plymouth. The evil that still lingers will wreak havoc on our little town under the veil of darkness, taking away both innocent and guilty souls from the living world. \n \n",
             "*You are now able to use your house until the next day. All public town chats will be closed off. You will receive a ping when the night is over.*"
         ]
-    } 
+    },
+
+    "voting": {
+        "color": "0x00D5FF",
+        "content": [
+            "The town will now decide the fate of XXXXXX. \n \n",
+
+            "If more than half of the voting town votes guilty, then they will be lynched. If more than half of the voting town votes innocent, then they will be acquitted. Abstainees will not be considered part of the vote. \n \n",
+
+            "*Please use the buttons below this message to cast your vote. You can change your vote by clicking another button.*"
+        ]
+    },
+
+    "voting_guilty": {
+        "color": "0xFF0000",
+        "content": [
+            "**The town has found XXXXXX guilty by a vote of [guilty] to [innocent].** \n",
+            "They will soon be put to death. \n \n",
+
+            "XXXXXX will provide their last words before their execution."
+        ]
+    },
+
+    "voting_lynch": {
+        "color": "0xFF0000",
+        "content": [
+            "**XXXXXX has been hung. NUM people remain in the town.**"
+        ]
+    },
+
+    "voting_innocent": {
+        "color": "0x00FF00",
+        "content": [
+            "**The town has found XXXXXX innocent by a vote of [innocent] to [guilty].** \n",
+            "They can step down from the podium. The town can continue to vote until time runs out."
+        ]
+    }
 }

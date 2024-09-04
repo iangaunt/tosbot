@@ -11,6 +11,8 @@ export default class ServerRoleHandler {
     }
     
     async createRoles() {
+        this.roles = new Map<string, string>();
+
         const alive = await this.guild.roles.create({
             name: "Alive",
             color: Number(0x98A6D9),
@@ -24,6 +26,7 @@ export default class ServerRoleHandler {
                 PermissionsBitField.Flags.ViewChannel
             ]
         });
+        this.roles.set("alive", alive.id);
 
         const dead = await this.guild.roles.create({
             name: "Dead",
@@ -36,6 +39,7 @@ export default class ServerRoleHandler {
                 PermissionsBitField.Flags.ViewChannel
             ]
         });
+        this.roles.set("dead", dead.id);
 
         const killed = await this.guild.roles.create({
             name: "Killed",
@@ -43,6 +47,7 @@ export default class ServerRoleHandler {
             position: 12,
             mentionable: false
         });
+        this.roles.set("killed", killed.id);
 
         const lynched = await this.guild.roles.create({
             name: "Lynched",
@@ -50,13 +55,10 @@ export default class ServerRoleHandler {
             position: 13,
             mentionable: false
         });
+        this.roles.set("lynched", lynched.id);;
+    }
 
-        this.roles = new Map();
-        this.roles.set("alive", alive.id);
-        this.roles.set("dead", dead.id);
-        this.roles.set("killed", killed.id);
-        this.roles.set("lynched", lynched.id);
-
+    getRoleMap(): Map<string, string> {
         return this.roles;
     }
 

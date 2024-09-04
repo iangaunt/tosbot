@@ -1,5 +1,4 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder, Guild, GuildMember, User } from "discord.js";
-import ServerRoleHandler from "../server/ServerRoleHandler";
 import PlayerRoleHandler from "./PlayerRoleHandler";
 import Game from "../../../global/Game";
 
@@ -21,9 +20,9 @@ export default class QueueBuilder {
 
     async create(interaction) {
         const join = new ButtonBuilder()
-                .setCustomId("join")
-                .setLabel("Join")
-                .setStyle(ButtonStyle.Success)
+            .setCustomId("join")
+            .setLabel("Join")
+            .setStyle(ButtonStyle.Success)
 
         const leave = new ButtonBuilder()
             .setCustomId("leave")
@@ -46,7 +45,7 @@ export default class QueueBuilder {
         const collector = queue.createMessageComponentCollector({ 
             componentType: ComponentType.Button,
             collectorFilter, 
-            time: 5_000 
+            time: 3_000 
         })
         
         collector.on("collect", async (buttonInteraction) => {

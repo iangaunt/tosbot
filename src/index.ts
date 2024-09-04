@@ -42,8 +42,6 @@ for (const file of eventFiles) {
 }
 
 client.rest.on("rateLimited", console.log);
-client.on('debug', console.log)
-      .on('warn', console.log)
 	  
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error);
