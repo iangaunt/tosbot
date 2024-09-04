@@ -1,9 +1,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { token } = require('../config.json');
 
+import { Events } from "discord.js";
+import Game from "./global/Game";
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+Game.client = client;
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
@@ -36,5 +40,13 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
+client.rest.on("rateLimited", console.log);
+client.on('debug', console.log)
+      .on('warn', console.log)
+	  
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error);
+});
 
 client.login(token);

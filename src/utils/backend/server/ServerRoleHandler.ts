@@ -1,9 +1,9 @@
-import { Guild, PermissionsBitField, Role } from "discord.js";
+import { Guild, PermissionsBitField, Role, TextChannel } from "discord.js";
 import QueueBuilder from "../game/QueueBuilder";
 import Game from "../../../global/Game";
 
 export default class ServerRoleHandler {
-    roles: Map<string, Promise<Role>>;
+    roles: Map<string, string>;
     guild: Guild;
 
     constructor(guild: Guild) {
@@ -11,29 +11,40 @@ export default class ServerRoleHandler {
     }
     
     async createRoles() {
-        const alive = this.guild.roles.create({
+        const alive = await this.guild.roles.create({
             name: "Alive",
             color: Number(0x98A6D9),
             hoist: true,
             position: 10,
-            mentionable: false
+            mentionable: false,
+            permissions: [
+                PermissionsBitField.Flags.Connect, 
+                PermissionsBitField.Flags.SendMessages, 
+                PermissionsBitField.Flags.Speak,
+                PermissionsBitField.Flags.ViewChannel
+            ]
         });
 
-        const dead = this.guild.roles.create({
+        const dead = await this.guild.roles.create({
             name: "Dead",
             hoist: true,
             position: 11,
             mentionable: false,
+            permissions: [
+                PermissionsBitField.Flags.Connect, 
+                PermissionsBitField.Flags.SendMessages, 
+                PermissionsBitField.Flags.ViewChannel
+            ]
         });
 
-        const killed = this.guild.roles.create({
+        const killed = await this.guild.roles.create({
             name: "Killed",
             color: Number(0x7D0707),
             position: 12,
             mentionable: false
         });
 
-        const lynched = this.guild.roles.create({
+        const lynched = await this.guild.roles.create({
             name: "Lynched",
             color: Number(0xC70000),
             position: 13,
@@ -41,32 +52,10 @@ export default class ServerRoleHandler {
         });
 
         this.roles = new Map();
-        this.roles.set("alive", alive);
-        this.roles.set("dead", dead);
-        this.roles.set("killed", killed);
-        this.roles.set("lynched", lynched);
-        
-        for (let i = 1; i <= 3; i++) {
-            const num = this.guild.roles.create({
-                name: i.toString(),
-                position: 13 + i,
-                mentionable: true
-            })
-            this.roles.set("player" + i, num);
-        }
-
-        (await alive).setPermissions([
-            PermissionsBitField.Flags.Connect, 
-            PermissionsBitField.Flags.SendMessages, 
-            PermissionsBitField.Flags.Speak,
-            PermissionsBitField.Flags.ViewChannel
-        ]);
-
-        (await dead).setPermissions([
-            PermissionsBitField.Flags.Connect, 
-            PermissionsBitField.Flags.SendMessages, 
-            PermissionsBitField.Flags.ViewChannel
-        ]);
+        this.roles.set("alive", alive.id);
+        this.roles.set("dead", dead.id);
+        this.roles.set("killed", killed.id);
+        this.roles.set("lynched", lynched.id);
 
         return this.roles;
     }
@@ -74,11 +63,22 @@ export default class ServerRoleHandler {
     async assignStartingRoles() {
         for (let i = 0; i < Game.queueBuilder.members.length; i++) {
             const member = Game.queueBuilder.members[i];
-            member.roles.add(await this.roles.get("alive"));
-            member.roles.add(await this.roles.get("player" + (i + 1)));
+            member.roles.add(this.roles.get("alive"));
 
             if (member.id != this.guild.ownerId) {
                 member.setNickname("[ " + (i + 1) + " ] - " + member.user.displayName);
+                const channel: TextChannel = <TextChannel> this.guild.channels.cache.get(Game.townBuilder.createdChannels.get("house-" + (i + 1)));
+                channel.permissionOverwrites.set([
+                    {
+                        id: member.id,
+                        allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
+                        deny: [PermissionsBitField.Flags.CreateInstantInvite]
+                    },
+                    {
+                        id: this.guild.id,
+                        deny: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages]
+                    }
+                ])
             }
         }
     }
@@ -87,7 +87,7 @@ export default class ServerRoleHandler {
         const arr = Array.from(Game.serverRoleHandler.roles.keys());
 
         for (let i = 0; i < arr.length; i++) {
-            const role = await Game.serverRoleHandler.roles.get(arr[i]);
+            const role = this.guild.roles.cache.get(await Game.serverRoleHandler.roles.get(arr[i]));
             role.delete("Server clear.").catch(console.error);
         }
     }

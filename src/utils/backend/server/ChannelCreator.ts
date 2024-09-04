@@ -2,7 +2,6 @@ import { ChannelType, Guild } from "discord.js";
 
 export default class ChannelCreator {
     static async createCategory(guild: Guild, name: string) {
-        console.log(name);
         return guild.channels.create({
             name: name,
             type: ChannelType.GuildCategory

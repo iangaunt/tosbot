@@ -1,0 +1,17 @@
+{
+    "daytime": {
+        "color": "0xFFCF00",
+        "content": [
+            "Rise and shine! It is a new day in the town of Plymouth. Evil may still lurk in our tiny little town, and it is up to the survivors to vote someone up to the gallows on suspect of treason. \n \n",
+            "*Use of your house is now forbidden until nightfall. Last wills can still be edited, but make sure not to post it unless necessary!!*"
+        ]
+    },
+
+    "nighttime": {
+        "color": "0x222941",
+        "content": [
+            "It's getting late! It is now nighttime in the town of Plymouth. The evil that still lingers will wreak havoc on our little town under the veil of darkness, taking away both innocent and guilty souls from the living world. \n \n",
+            "*You are now able to use your house until the next day. All public town chats will be closed off. You will receive a ping when the night is over.*"
+        ]
+    } 
+}

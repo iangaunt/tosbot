@@ -1,6 +1,7 @@
-import { Guild, GuildMember } from "discord.js";
+import { Client, Guild, GuildMember, TextChannel } from "discord.js";
 import PlayerRole from "../classes/PlayerRole";
 import Game from "../../../global/Game";
+import RoleEmbed from "../../visuals/RoleEmbed";
 
 export default class PlayerRoleHandler {
     guild: Guild;
@@ -31,6 +32,15 @@ export default class PlayerRoleHandler {
         
         for (let i = 0; i < this.players.length; i++) {
             const role = this.playerRoleMap.get(this.players[i]);
+            const channelId = createdChannels.get("house-" + (i + 1));
+
+            const channel: TextChannel = <TextChannel> Game.client.channels.cache.get(channelId);
+            channel.send({
+                content: "@everyone",
+                embeds: [
+                    RoleEmbed(role.name)
+                ]
+            })
         }
     }
 }

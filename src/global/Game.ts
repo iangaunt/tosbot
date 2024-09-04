@@ -4,8 +4,12 @@ import ServerRoleHandler from "../utils/backend/server/ServerRoleHandler";
 import TownBuilder from "../utils/backend/game/TownBuilder";
 import PlayerRoleHandler from "../utils/backend/game/PlayerRoleHandler";
 
+import { Client } from "discord.js";
+
 export default class Game {
-    static townBuilder: TownBuilder;
+    static client: Client;
+
+    static townBuilder: TownBuilder = null;
     static queueBuilder: QueueBuilder;
     static serverRoleHandler: ServerRoleHandler;
     static rolelistGenerator: RolelistGenerator;

@@ -46,7 +46,7 @@ export default class QueueBuilder {
         const collector = queue.createMessageComponentCollector({ 
             componentType: ComponentType.Button,
             collectorFilter, 
-            time: 3_000 
+            time: 5_000 
         })
         
         collector.on("collect", async (buttonInteraction) => {

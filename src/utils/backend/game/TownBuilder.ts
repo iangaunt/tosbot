@@ -25,17 +25,21 @@ export default class TownBuilder {
         const townID = town.id;
         this.createdChannels.set("town", townID);
 
+        console.log(Game.serverRoleHandler.roles);
+        console.log(Game.serverRoleHandler.roles.get("alive"));
+        console.log(Game.serverRoleHandler.roles.get("dead"));
+
         const townSquare = await ChannelCreator.createChannelPerms(
             this.guild, "town-square", 
             ChannelType.GuildText, townID,
             [
                 {
-                    id: (await Game.serverRoleHandler.roles.get("alive")).id,
+                    id: Game.serverRoleHandler.roles.get("alive"),
                     allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
                     deny: [PermissionsBitField.Flags.AttachFiles]
                 },
                 {
-                    id: (await Game.serverRoleHandler.roles.get("dead")).id,
+                    id: Game.serverRoleHandler.roles.get("dead"),
                     allow: [PermissionsBitField.Flags.ViewChannel],
                     deny: [PermissionsBitField.Flags.SendMessages]
                 },
@@ -53,11 +57,11 @@ export default class TownBuilder {
             ChannelType.GuildText, townID,
             [
                 {
-                    id: (await Game.serverRoleHandler.roles.get("alive")).id,
+                    id: Game.serverRoleHandler.roles.get("alive"),
                     deny: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages]
                 },
                 {
-                    id: (await Game.serverRoleHandler.roles.get("dead")).id,
+                    id: Game.serverRoleHandler.roles.get("dead"),
                     allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
                     deny: [PermissionsBitField.Flags.AttachFiles]
                 },
@@ -74,20 +78,9 @@ export default class TownBuilder {
         this.createdChannels.set("houses", housesID);
 
         for (let i = 1; i <= 3; i++) {
-            const house = await ChannelCreator.createChannelPerms(
+            const house = await ChannelCreator.createChannel(
                 this.guild, "house-" + i, 
-                ChannelType.GuildText, housesID,
-                [
-                    {
-                        id: (await Game.serverRoleHandler.roles.get("player" + i)).id,
-                        allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
-                        deny: [PermissionsBitField.Flags.CreateInstantInvite]
-                    },
-                    {
-                        id: this.guild.id,
-                        deny: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages]
-                    }
-                ]
+                ChannelType.GuildText, housesID
             );
             this.createdChannels.set("house-" + i, house.id);
         }
