@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 
-import roledata from "../../../public/roles/roledata.json";
+import roledata from "../../../../public/embeds/roles.json";
 
 export default function RoleEmbed(role: string) {
     const selectedRole = roledata[role];

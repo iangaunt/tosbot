@@ -1,8 +1,10 @@
-import { ChannelType, Guild, PermissionsBitField } from "discord.js";
-import QueueBuilder from "./QueueBuilder";
-import ChannelCreator from "../server/ChannelCreator";
-import ServerRoleHandler from "../server/ServerRoleHandler";
+import { BaseMessageOptions, ChannelType, Guild, PermissionsBitField, TextChannel } from "discord.js";
+
 import Game from "../../../global/Game";
+import ChannelHandler from "../server/ChannelHandler";
+import DaytimeEmbed from "../../visuals/embeds/DaytimeEmbed";
+import NighttimeEmbed from "../../visuals/embeds/NighttimeEmbed";
+import BasicEmbed from "../../visuals/embeds/BasicEmbed";
 
 export default class TownBuilder {
     createdChannels: Map<string, string>;
@@ -21,17 +23,17 @@ export default class TownBuilder {
     }
 
     async create() {
-        const town = await ChannelCreator.createCategory(this.guild, "Town");
+        const town = await ChannelHandler.createCategory(this.guild, "Town");
         const townID = town.id;
         this.createdChannels.set("town", townID);
 
         let rolesMap = Game.serverRoleHandler.getRoleMap();
         while (rolesMap.size < 2) {
             rolesMap = Game.serverRoleHandler.getRoleMap();
-            await new Promise(f => setTimeout(f, 250));
+            await new Promise(f => setTimeout(f, 100));
         }
 
-        const podium = await ChannelCreator.createChannelPerms(
+        const podium = await ChannelHandler.createChannelPerms(
             this.guild, "podium", 
             ChannelType.GuildText, townID,
             [
@@ -51,14 +53,13 @@ export default class TownBuilder {
         );
         this.createdChannels.set("podium", podium.id);
 
-        const townSquare = await ChannelCreator.createChannelPerms(
+        const townSquare = await ChannelHandler.createChannelPerms(
             this.guild, "town-square", 
             ChannelType.GuildText, townID,
             [
                 {
                     id: rolesMap.get("alive"),
-                    allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
-                    deny: [PermissionsBitField.Flags.AttachFiles]
+                    deny: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.AttachFiles]
                 },
                 {
                     id: rolesMap.get("dead"),
@@ -73,7 +74,7 @@ export default class TownBuilder {
         );
         this.createdChannels.set("town-square", townSquare.id);
 
-        const afterlife = await ChannelCreator.createChannelPerms(
+        const afterlife = await ChannelHandler.createChannelPerms(
             this.guild, "afterlife", 
             ChannelType.GuildText, townID,
             [
@@ -94,17 +95,52 @@ export default class TownBuilder {
         );
         this.createdChannels.set("afterlife", afterlife.id);
     
-        const houses = await ChannelCreator.createCategory(this.guild, "Houses");
+        const houses = await ChannelHandler.createCategory(this.guild, "Houses");
         const housesID = houses.id;
         this.createdChannels.set("houses", housesID);
 
         for (let i = 1; i <= 3; i++) {
-            const house = await ChannelCreator.createChannel(
+            const house = await ChannelHandler.createChannelPerms(
                 this.guild, "house-" + i, 
-                ChannelType.GuildText, housesID
+                ChannelType.GuildText, housesID,
+                [
+                    {
+                        id: this.guild.id,
+                        deny: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages]
+                    }
+                ]
             );
             this.createdChannels.set("house-" + i, house.id);
         }
+    }
+
+    async openChannel(urId: string, channelId: string) {
+        const channel: TextChannel = <TextChannel> this.guild.channels.cache.get(channelId);
+        channel.permissionOverwrites.edit(urId, { ViewChannel: true, SendMessages: true })
+    }
+
+    async closeChannel(urId: string, channelId: string) {
+        const channel: TextChannel = <TextChannel> this.guild.channels.cache.get(channelId);
+        channel.permissionOverwrites.edit(urId, { ViewChannel: true, SendMessages: false })
+    }
+
+    async sendTimeMessage(type: string, num: number) {
+        const townSquare: TextChannel = <TextChannel> this.guild.channels.cache.get(this.createdChannels.get("town-square"));
+        const base = <BaseMessageOptions> {
+            content: "> <@&" + Game.serverRoleHandler.roles.get("alive") +">",
+            embeds: [ (type == "day" ? DaytimeEmbed(num) : NighttimeEmbed(num, false)) ]
+        }
+
+        const timeMessage = townSquare.send(base);
+    }
+
+    async sendEndingMessage(type: string) {
+        const townSquare: TextChannel = <TextChannel> this.guild.channels.cache.get(this.createdChannels.get("town-square"));
+        const base = <BaseMessageOptions> {
+            embeds: [ (type == "day" ? BasicEmbed("daytime_end") : BasicEmbed("nighttime_end")) ]
+        }
+
+        const timeMessage = townSquare.send(base); 
     }
 
     async clear() {

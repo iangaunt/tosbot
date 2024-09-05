@@ -1,4 +1,4 @@
-import roledata from "../../../../public/roles/roledata.json"
+import roledata from "../../../../public/embeds/roles.json"
 
 /** Generates a data structure grouping roles by their categories / subcategories. */
 export default class RoleFolder {

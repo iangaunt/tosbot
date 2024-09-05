@@ -1,4 +1,4 @@
-import roledata from "../../../../public/roles/roledata.json"
+import roledata from "../../../../public/embeds/roles.json"
 
 import RoleFolder from "../data/RoleFolder";
 
@@ -148,8 +148,9 @@ export default class RolelistGenerator {
             remainingRoles.splice(remainingRoles.indexOf("Mafioso"), 1);
         }
 
-        this.shuffle(rolelist);
-        return rolelist;
+        const shuffled = this.shuffle(rolelist);
+        console.log(shuffled);
+        return shuffled;
     }
 
     shuffle(arr: Array<string>) {
@@ -160,6 +161,7 @@ export default class RolelistGenerator {
             arr[i] = arr[random];
             arr[random] = temp;
         }
+        return arr;
     }
 
     generateRandomNonUnique() {

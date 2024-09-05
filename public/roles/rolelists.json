@@ -7,6 +7,13 @@
             "Any", "Any", "Any", "Any", "Any"
         ]
     },
+    "basic": {
+        "name": "Basic",
+        "roles": [
+            "Sheriff",
+            "Mafioso"
+        ]
+    },
     "classic": {
         "name": "Classic",
         "roles": [

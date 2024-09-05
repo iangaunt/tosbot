@@ -1,0 +1,22 @@
+{
+    "mafia_too_strong": {
+        "color": "0xDD0000",
+        "content": [
+            "**Your target's defense was too strong to kill.**"
+        ]
+    },
+    
+    "sheriff_guilty": {
+        "color": "0xDD0000",
+        "content": [
+            "**Your target is suspicious or framed!**"
+        ]
+    },
+
+    "sheriff_innocent": {
+        "color": "0x7FFF00",
+        "content": [
+            "**You cannot find evidence of wrongdoing. Your target is innocent or great at hiding secrets!**"
+        ]
+    }
+}

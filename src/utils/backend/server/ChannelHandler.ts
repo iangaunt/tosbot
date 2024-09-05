@@ -1,6 +1,6 @@
 import { ChannelType, Guild } from "discord.js";
 
-export default class ChannelCreator {
+export default class ChannelHandler {
     static async createCategory(guild: Guild, name: string) {
         return guild.channels.create({
             name: name,
@@ -25,7 +25,6 @@ export default class ChannelCreator {
     }
 
     static async createChannelPerms(guild: Guild, name: string, channelType, parent: string, permissionOverwrites) {
-        console.log(name);
         return guild.channels.create({
             name: name,
             type: channelType,

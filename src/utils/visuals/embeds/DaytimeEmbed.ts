@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 
-import messages from "../../../public/embeds/messages.json"
+import messages from "../../../../public/embeds/messages.json"
 
 export default function DaytimeEmbed(num: number) {
     const daytime = messages.daytime;

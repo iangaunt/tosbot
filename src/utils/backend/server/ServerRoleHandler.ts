@@ -1,5 +1,4 @@
 import { Guild, PermissionsBitField, Role, TextChannel } from "discord.js";
-import QueueBuilder from "../game/QueueBuilder";
 import Game from "../../../global/Game";
 
 export default class ServerRoleHandler {

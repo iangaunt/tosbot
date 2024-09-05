@@ -1,5 +1,7 @@
+
+
 /** 
- * A class which models the setup of the objects held in the `roledata.json` file. 
+ * A class which models the setup of the objects held in the `roles.json` file. 
  * 
  * @param color - The color of the role, which is shown in the embed (like in `/role` or `/my`).
  * @param emoji - The unique icon of the role, used in graveyards and embeds.
@@ -11,10 +13,15 @@
  * 
  * @param unique - `true` if only one copy of the role can exist per town, `false` if otherwise.
  */
-export default class RoleData {
+export class RoleData {
     color: string;
     emoji: string;
     description: Array<string>;
     category: string;
     unique: boolean;
+}
+
+export class Rolelist {
+    name: string;
+    role: Array<string>;
 }

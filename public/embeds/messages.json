@@ -3,7 +3,29 @@
         "color": "0xFFCF00",
         "content": [
             "Rise and shine! It is a new day in the town of Plymouth. Evil may still lurk in our tiny little town, and it is up to the survivors to vote someone up to the gallows on suspect of treason. \n \n",
-            "*Use of your house is now forbidden until nightfall. Last wills can still be edited, but make sure not to post it unless necessary!!*"
+            "*You can still use your house for storing information and such. Last wills can still be edited, but make sure not to post it unless necessary!!*"
+        ]
+    },
+
+    "daytime_end": {
+        "color": "0xFFCF00",
+        "content": [
+            "The day has ended."
+        ]
+    },
+
+    "game_starting_soon": {
+        "color": "0x232426",
+        "title": "Get ready to play!",
+        "content": [
+            "The game will start in 10 seconds. The `#town-square` will be open to everyone and day 1 will begin. \n \n",
+
+            "**USEFUL INFORMATION & COMMANDS:** \n",
+            "`*` Images and wills are not allowed in public chats, but you can use this channel to update your will and send it as a message. \n",
+            "`*` To see other roles, you can use the `/role` command and navigate all 50 roles using the pages (there are 2 pages since Discord only allows 25 options in a page). \n",
+            "`*` If you die, you will be locked out of your house chats and faction chats until the end of the game. \n \n",
+
+            "Please have fun! It is just a game, so don't harass other players if they kill you or hang you."
         ]
     },
 
@@ -12,6 +34,20 @@
         "content": [
             "It's getting late! It is now nighttime in the town of Plymouth. The evil that still lingers will wreak havoc on our little town under the veil of darkness, taking away both innocent and guilty souls from the living world. \n \n",
             "*You are now able to use your house until the next day. All public town chats will be closed off. You will receive a ping when the night is over.*"
+        ]
+    },
+
+    "nighttime_end": {
+        "color": "0x222941",
+        "content": [
+            "The night has ended."
+        ]
+    },
+
+    "testing": {
+        "color": "0x000000",
+        "content": [
+            "This is an embed for testing."
         ]
     },
 
@@ -36,18 +72,19 @@
         ]
     },
 
-    "voting_lynch": {
-        "color": "0xFF0000",
-        "content": [
-            "**XXXXXX has been hung. NUM people remain in the town.**"
-        ]
-    },
-
+    
     "voting_innocent": {
         "color": "0x00FF00",
         "content": [
             "**The town has found XXXXXX innocent by a vote of [innocent] to [guilty].** \n",
             "They can step down from the podium. The town can continue to vote until time runs out."
+        ]
+    },
+
+    "voting_lynch": {
+        "color": "0xFF0000",
+        "content": [
+            "**XXXXXX has been hung. NUM people remain in the town.**"
         ]
     }
 }

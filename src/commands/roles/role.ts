@@ -1,7 +1,7 @@
 import { APIApplicationCommandOptionChoice, SlashCommandBuilder } from "discord.js";
 
-import roledata from "../../../public/roles/roledata.json";
-import RoleEmbed from "../../utils/visuals/RoleEmbed"
+import roledata from "../../../public/embeds/roles.json"
+import RoleEmbed from "../../utils/visuals/embeds/RoleEmbed"
 import RoleFolder from "../../utils/backend/data/RoleFolder";
 
 RoleFolder.buildRoleFolder();

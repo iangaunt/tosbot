@@ -1,0 +1,31 @@
+{
+    "Mafioso": {
+        "color": "0xDD0000",
+        "emoji": "<:mafioso:1279841247707795538>",
+        "title": "Select someone to attack!",
+        "description": [
+            "**You pick up your gun, its metallic barrel shining under a single dim lamplight ...** \n \n",
+
+            "You can vote to shoot someone each night, dealing a **Basic** attack. \n",
+            "If your target is **too strong to kill**, then you will be notified in your house chat. \n",
+            "If there is a **Godfather** in the game, then you will attack whoever **they choose**. \n \n",
+
+            "*If you nor the Godfather select a player, then you will stay home and will not attack.*"
+        ]
+    },
+
+    "Sheriff": {
+        "color": "0x7FFF00",
+        "emoji": "<:sheriff:1279841480327954453>",
+        "title": "Select someone to investigate!",
+        "description": [
+            "**You look at your badge on your nightstand. You'll find the evil in this town ...** \n \n",
+
+            "You will visit someone's house and interrogate them to see if they are good or evil. \n",
+            "You will be notified in your house chat if your target is innocent or guilty. \n",
+            "Note that roles like the Framer, Godfather, and Vampire may obscure or reverse these results. \n \n",
+            
+            "*If you do not choose a target, you will stay home and will not receive any results.*"
+        ]
+    }
+}
