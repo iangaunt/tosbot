@@ -1,8 +1,9 @@
-import { ButtonInteraction, ButtonStyle, ComponentType, Interaction, TextChannel } from "discord.js";
+import { ButtonInteraction, ButtonStyle, ComponentType, Interaction, PermissionFlagsBits, PermissionsBitField, TextChannel } from "discord.js";
 import roledata from "../../../../public/embeds/roles.json"
 import Game from "../../../global/Game";
 import ActionController from "../../visuals/controllers/ActionController";
 import { RoleData } from "./Structures";
+import ResponseEmbed from "../../visuals/embeds/ResponseEmbed";
 
 export default class Player {
     userId: string;
@@ -12,8 +13,12 @@ export default class Player {
     category: string;
     alive: boolean;
 
+    defense: number;
+    attack: number;
+
     number: number;
     houseChannelId: string;
+    killReason: string;
 
     allowedActionPlayers: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
@@ -31,6 +36,9 @@ export default class Player {
         
         this.category = data.category;
         this.faction = this.category.split(" ")[0];
+
+        this.defense = data.defense;
+        this.attack = data.attack;
 
         this.alive = true;
         this.takesInMultipleActionPlayers = takesInMultipleActionPlayers;
@@ -73,8 +81,35 @@ export default class Player {
         });
 
         collector.on("end", () => {
-            message.edit({ components: actionController.highlightComponent(this.actionSelectedFirst) });
+            if (this.actionSelectedFirst != 0) {
+                message.edit({ components: actionController.highlightComponent(this.actionSelectedFirst) });
+            }
         })
+    }
+
+    attackOn(other: Player) {
+        return this.attack > other.defense;
+    }
+
+    async die(killReason: string) {
+        this.alive = false;
+        this.killReason = killReason;
+        
+        const user = Game.guild.members.cache.get(this.userId);
+
+        user.roles.remove(Game.serverRoleHandler.roles.get("alive"));
+        user.roles.add(Game.serverRoleHandler.roles.get("dead"));
+        user.roles.add(Game.serverRoleHandler.roles.get("killed"));
+
+        const houseChannel = <TextChannel> Game.guild.channels.cache.get(this.houseChannelId);
+        houseChannel.permissionOverwrites.edit(this.userId, { SendMessages: false });
+
+        Game.kills.push(this);
+
+        const message = await <any> houseChannel.send({
+            content: `> <@${this.userId}>`,
+            embeds: [ ResponseEmbed("mafia_attack")]
+        });
     }
 
     getActionResults(): Array<number> {

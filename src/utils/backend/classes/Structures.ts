@@ -19,6 +19,8 @@ export class RoleData {
     description: Array<string>;
     category: string;
     unique: boolean;
+    attack: number;
+    defense: number;
 }
 
 export class Rolelist {

@@ -1,4 +1,18 @@
 {
+    "mafia_attack": {
+        "color": "0xDD0000",
+        "content": [
+            "**You were attacked by a member of the Mafia!**"
+        ]
+    },
+
+    "home": {
+        "color": "0x00000",
+        "content": [
+            "**You chose to stay home and not use your nightly ability.**"
+        ]
+    },
+    
     "mafia_too_strong": {
         "color": "0xDD0000",
         "content": [

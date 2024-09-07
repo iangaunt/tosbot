@@ -10,6 +10,7 @@ import Player from "../../utils/backend/classes/Player";
 
 import rolelists from "../../../public/roles/rolelists.json"
 import ActionResponses from "../../utils/backend/data/ActionResponses";
+import ResponseEmbed from "../../utils/visuals/embeds/ResponseEmbed";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -20,8 +21,6 @@ module.exports = {
         const guild: Guild = interaction.guild;
         
         if (Game.townBuilder == null) {
-            guild.roles.cache.get("1279908685065359403").setPosition(1000);
-            
             const g = Game;
             g.guild = guild;
 
@@ -99,14 +98,21 @@ module.exports = {
                     const player = g.playerRoleHandler.numberRoleMap.get(interactionNumbers[i]);
                     const actionItems = actionResponses.get(player.number);
 
-                    let response: BaseMessageOptions;
-                    if (player.takesInMultipleActionPlayers) {
-                        response = r.getResponse(player.name, actionItems[0], actionItems[1]);
-                    } else {
-                        response = r.getResponse(player.name, actionItems[0]);
+                    const channel: TextChannel = <TextChannel> g.guild.channels.cache.get(player.houseChannelId);
+
+                    if (actionItems[0] == 0 || actionItems[1] == 0) {
+                        channel.send({
+                            embeds: [ ResponseEmbed("home") ]
+                        })
                     }
 
-                    const channel: TextChannel = <TextChannel> g.guild.channels.cache.get(player.houseChannelId);
+                    let response: BaseMessageOptions;
+                    if (player.takesInMultipleActionPlayers) {
+                        response = r.getResponse(player, actionItems[0], actionItems[1]);
+                    } else {
+                        response = r.getResponse(player, actionItems[0]);
+                    }
+
                     channel.send(response);
                 }
             }

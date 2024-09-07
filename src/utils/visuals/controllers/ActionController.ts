@@ -88,9 +88,9 @@ export default class ActionController {
         
         for (let i = 1; i <= this.buttons.length; i++) {
             if (i == selected) {
-                const button = this.buttons[i];
+                const button = this.buttons[i - 1];
                 button.setDisabled(true);
-                row.addComponents(this.buttons[i]);
+                row.addComponents(button);
             }
         }
 

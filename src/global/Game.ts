@@ -6,6 +6,7 @@ import PlayerRoleHandler from "../utils/backend/game/PlayerRoleHandler";
 
 import { Client, Guild } from "discord.js";
 import ActionResponses from "../utils/backend/data/ActionResponses";
+import Player from "../utils/backend/classes/Player";
 
 export default class Game {
     static client: Client;
@@ -27,6 +28,8 @@ export default class Game {
     static dayLength: number = 15; // The number of seconds in the day before the voting period.
     static votingLength: number = 10; // The number of seconds in the voting period (not counting actual polls).
     static nightLength: number = 15; // The number of seconds in the night.
+
+    static kills: Array<Player> = [];
 
     /**
      * Fetches the current rolelist for the game (should be in the order of the players).
