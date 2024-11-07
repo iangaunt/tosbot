@@ -10,11 +10,50 @@ export default class Responses {
         
         const role = player.name;
 
-        if (role === "Mafioso") {
+        if (role === "Investigator") {
+            const target = Game.playerRoleHandler.numberRoleMap.get(actionItemOne);
+            const investStrings = [
+                "investigator_bodyguard_godfather_arsonist_crusader",
+                "investigator_framer_vampire_jester_hexmaster",
+                "investigator_vigilante_veteran_mafioso_pirate_ambusher",
+                "investigator_medium_janitor_retributionist_necromancer_trapper",
+                "investigator_survivor_vampirehunter_amnesiac_medusa_psychic",
+                "investigator_spy_blackmailer_jailor_guardianangel",
+                "investigator_sheriff_executioner_werewolf_poisoner",
+                "investigator_lookout_forger_juggernaut_covenleader",
+                "investigator_escort_transporter_consort_hypnotist",
+                "investigator_doctor_disguiser_serialkiller_potionmaster",
+                "investigator_investigator_consigliere_mayor_tracker_plaguebearer",
+                "investigator_pestilence"
+            ]
+
+            if (target.framed) return {
+                embeds: [ ResponseEmbed("investigator_framer_vampire_jester_hexmaster") ]
+            }
+
+            if (target.doused) return {
+                embeds: [ ResponseEmbed("investigator_bodyguard_godfather_arsonist_crusader") ]
+            }
+            
+            const split = target.name.split(" ");
+            let locator = "";
+            for (let i = 0; i < split.length; i++) {
+                locator += split[i].toLowerCase();
+            }
+
+            for (let i = 0; i < investStrings.length; i++) {
+                const str = investStrings[i];
+                if (str.indexOf(locator) > -1) return {
+                    embeds: [ ResponseEmbed(str) ]
+                }
+            }
+
+        } else if (role === "Mafioso") {
             const target = Game.playerRoleHandler.numberRoleMap.get(actionItemOne);
 
             if (player.attackOn(target)) {
                 target.die("mafia");
+                return;
             } else {
                 return {
                     embeds: [ ResponseEmbed("mafia_too_strong") ]

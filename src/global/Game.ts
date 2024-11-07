@@ -30,6 +30,7 @@ export default class Game {
     static nightLength: number = 15; // The number of seconds in the night.
 
     static kills: Array<Player> = [];
+    static visits: Array<Array<Player>> = [];
 
     /**
      * Fetches the current rolelist for the game (should be in the order of the players).

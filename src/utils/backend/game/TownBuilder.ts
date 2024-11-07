@@ -124,6 +124,11 @@ export default class TownBuilder {
         channel.permissionOverwrites.edit(urId, { ViewChannel: true, SendMessages: false })
     }
 
+    async sendMessage(base: BaseMessageOptions) {
+        const townSquare: TextChannel = <TextChannel> this.guild.channels.cache.get(this.createdChannels.get("town-square"));
+        townSquare.send(base);
+    }
+
     async sendTimeMessage(type: string, num: number) {
         const townSquare: TextChannel = <TextChannel> this.guild.channels.cache.get(this.createdChannels.get("town-square"));
         const base = <BaseMessageOptions> {

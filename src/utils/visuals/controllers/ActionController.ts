@@ -8,6 +8,7 @@ export default class ActionController {
     constructor() {};
 
     create(role: string, allowed: number[]) {
+        console.log(allowed);
         this.buttons = [];
 
         const prh = Game.playerRoleHandler;
@@ -97,7 +98,5 @@ export default class ActionController {
         return [ row ];
     }
 
-    highlightComponents(selected: number) {
-
-    }
+    highlightComponents(selected: number) {}
 }

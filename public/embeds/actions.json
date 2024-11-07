@@ -1,4 +1,19 @@
 {
+    "Investigator": {
+        "color": "0xDD0000",
+        "emoji": "<:investigator:1279841410287141077>",
+        "title": "Select someone to investigate!",
+        "description": [
+            "**You don your hat and your magnifying glass, preparing to throw away your morals ...** \n \n",
+
+            "You can pick someone to investigate and **receive a clue to their role**. \n",
+            "You will receive **four to five** different roles that your target **could** be. \n",
+            "Some roles, like the Framer, Hex Master, and Arsonist, may give you incorrect results. \n \n",
+
+            "*If you do not choose a target, you will stay home and will not receive any results.*"
+        ]
+    },
+
     "Mafioso": {
         "color": "0xDD0000",
         "emoji": "<:mafioso:1279841247707795538>",

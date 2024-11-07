@@ -23,6 +23,10 @@ export default class Player {
     allowedActionPlayers: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
     hasNecronomicon: boolean = false;
+    doused: boolean = false;
+    framed: boolean = false;
+    hexed: boolean = false;
+    
     takesInMultipleActionPlayers: boolean;
 
     private actionSelectedFirst: number = 0;
@@ -94,7 +98,7 @@ export default class Player {
     async die(killReason: string) {
         this.alive = false;
         this.killReason = killReason;
-        
+
         const user = Game.guild.members.cache.get(this.userId);
 
         user.roles.remove(Game.serverRoleHandler.roles.get("alive"));

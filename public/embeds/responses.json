@@ -1,15 +1,99 @@
 {
+    "home": {
+        "color": "0x000000",
+        "content": [
+            "**You chose to stay home and not use your nightly ability.**"
+        ]
+    },
+
+    "investigator_bodyguard_godfather_arsonist_crusader": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Bodyguard, Godfather, Arsonist, or Crusader.**"
+        ]
+    },
+    
+    "investigator_doctor_disguiser_serialkiller_potionmaster": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Doctor, Disguiser, Serial Killer, or Potion Master.**"
+        ]
+    },
+    
+    "investigator_escort_transporter_consort_hypnotist": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Escort, Transporter, Consort, Hypnotist.**"
+        ]
+    },
+
+    "investigator_framer_vampire_jester_hexmaster": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Framer, Vampire, Jester, or Hex Master.**"
+        ]
+    },
+
+    "investigator_investigator_consigliere_mayor_tracker_plaguebearer": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Investigator, Consigliere, Mayor, Tracker, or Plaguebearer.**"
+        ]
+    },
+    
+    "investigator_lookout_forger_juggernaut_covenleader": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Lookout, Forger, Juggernaut, or Coven Leader.**"
+        ]
+    },
+    
+    "investigator_medium_janitor_retributionist_necromancer_trapper": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Medium, Janitor, Retributionist, Necromancer, or Trapper.**"
+        ]
+    },
+
+    "investigator_pestilence": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target has found you.**"
+        ]
+    },
+
+    "investigator_sheriff_executioner_werewolf_poisoner": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Sheriff, Executioner, Werewolf, or Poisoner.**"
+        ]
+    },
+
+    "investigator_spy_blackmailer_jailor_guardianangel": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Spy, Blackmailer, Jailor, or Guardian Angel.**"
+        ]
+    },
+
+    "investigator_survivor_vampirehunter_amnesiac_medusa_psychic": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Survivor, Vampire Hunter, Amnesiac, Medusa, or Psychic.**"
+        ]
+    },
+
+    "investigator_vigilante_veteran_mafioso_pirate_ambusher": {
+        "color": "0x7FFF00",
+        "content": [
+            "**Your target could be a Vigilante, Veteran, Mafioso, Pirate, or Ambusher.**"
+        ]
+    },
+
     "mafia_attack": {
         "color": "0xDD0000",
         "content": [
             "**You were attacked by a member of the Mafia!**"
-        ]
-    },
-
-    "home": {
-        "color": "0x00000",
-        "content": [
-            "**You chose to stay home and not use your nightly ability.**"
         ]
     },
     
