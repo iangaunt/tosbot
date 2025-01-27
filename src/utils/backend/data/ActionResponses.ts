@@ -7,8 +7,14 @@ export default class Responses {
 
     getResponse(player: Player, actionItemOne?: number, actionItemTwo?: number) {
         if (actionItemOne == 0 || actionItemTwo == 0) return;
-        
         const role = player.name;
+
+        if (role === "Doctor") {
+            const target = Game.playerRoleHandler.numberRoleMap.get(actionItemOne);
+            target.defense = Math.max(2, target.defense);
+            target.healed = true;
+            target.poisoned = false;
+        }
 
         if (role === "Investigator") {
             const target = Game.playerRoleHandler.numberRoleMap.get(actionItemOne);
@@ -48,7 +54,10 @@ export default class Responses {
                 }
             }
 
-        } else if (role === "Mafioso") {
+            return;
+        }
+        
+        if (role === "Mafioso") {
             const target = Game.playerRoleHandler.numberRoleMap.get(actionItemOne);
 
             if (player.attackOn(target)) {
@@ -59,7 +68,9 @@ export default class Responses {
                     embeds: [ ResponseEmbed("mafia_too_strong") ]
                 }
             }
-        } else if (role === "Sheriff") {
+        }
+
+        if (role === "Sheriff") {
             const target = Game.playerRoleHandler.numberRoleMap.get(actionItemOne);
             const innocentRoles: Array<string> = [ "Godfather", "Arsonist", "Werewolf", "Juggernaut" ];
             

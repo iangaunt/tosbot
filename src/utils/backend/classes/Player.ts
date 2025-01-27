@@ -1,52 +1,81 @@
-import { ButtonInteraction, ButtonStyle, ComponentType, Interaction, PermissionFlagsBits, PermissionsBitField, TextChannel } from "discord.js";
+import { ButtonInteraction, ButtonStyle, ComponentType, Interaction, TextChannel } from "discord.js";
+
 import roledata from "../../../../public/embeds/roles.json"
-import Game from "../../../global/Game";
+
 import ActionController from "../../visuals/controllers/ActionController";
-import { RoleData } from "./Structures";
+import Game from "../../../global/Game";
 import ResponseEmbed from "../../visuals/embeds/ResponseEmbed";
 
+import { RoleData } from "./Structures";
+
+/**
+ * The default class for handling player logic. Handles the current
+ * state of the account, their life and death status, faction, 
+ * statistics, and internal buffers. 
+ */
 export default class Player {
+    // The user ID of the player on Discord.
     userId: string;
 
+    // The name of the player's role. NOT the name of the player.
     name: string;
+
+    // The faction and category of the player (e.g. Town - Killng).
     faction: string;
     category: string;
+
+    // If the player is alive. `true` is the player is still in the game.
     alive: boolean;
 
-    defense: number;
-    attack: number;
-
-    number: number;
-    houseChannelId: string;
+    // The reason behind the death of the player. Used for reveals.
     killReason: string;
 
+    // The attack and defense of the player.
+    attack: number;
+    defense: number;
+    
+    // The "true" attack and defense - without any modifications from
+    // roles like Doctor or Serial Killer.
+    tAttack: number;
+    tDefense: number;
+
+    // The number of the player and their house channel ID for messages.
+    number: number;
+    houseChannelId: string;
+
+    // The players that this role is allowed to modify with their abilities.
     allowedActionPlayers: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
+    // Various stats for the player's in-game status.
     hasNecronomicon: boolean = false;
+    
     doused: boolean = false;
     framed: boolean = false;
+    healed: boolean = false;
     hexed: boolean = false;
+    poisoned: boolean = false;
     
+    // If a role takes in multiple arguments, this is where it will be specified.
     takesInMultipleActionPlayers: boolean;
 
+    // Selected players for actions.
     private actionSelectedFirst: number = 0;
     private actionSelectedSecond: number = 0; 
 
     constructor(name: string, userId: string, number: number, takesInMultipleActionPlayers: boolean) {
         this.userId = userId;
-
         this.name = name;
+
         const data: RoleData = roledata[name];
         
         this.category = data.category;
         this.faction = this.category.split(" ")[0];
-
         this.defense = data.defense;
+        this.tDefense = data.defense;
         this.attack = data.attack;
-
+        this.tAttack = data.attack;
         this.alive = true;
         this.takesInMultipleActionPlayers = takesInMultipleActionPlayers;
-
         this.number = number;
         this.houseChannelId = Game.townBuilder.createdChannels.get("house-" + this.number);
     }
@@ -99,13 +128,13 @@ export default class Player {
         this.alive = false;
         this.killReason = killReason;
 
-        const user = Game.guild.members.cache.get(this.userId);
+        const user = Game.getUser(this.userId);
 
-        user.roles.remove(Game.serverRoleHandler.roles.get("alive"));
-        user.roles.add(Game.serverRoleHandler.roles.get("dead"));
-        user.roles.add(Game.serverRoleHandler.roles.get("killed"));
+        user.roles.remove(Game.getRole("alive"));
+        user.roles.add(Game.getRole("dead"));
+        user.roles.add(Game.getRole("killed"));
 
-        const houseChannel = <TextChannel> Game.guild.channels.cache.get(this.houseChannelId);
+        const houseChannel = Game.getChannel(this.houseChannelId);
         houseChannel.permissionOverwrites.edit(this.userId, { SendMessages: false });
 
         Game.kills.push(this);

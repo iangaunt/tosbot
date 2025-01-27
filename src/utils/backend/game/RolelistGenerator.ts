@@ -124,8 +124,6 @@ export default class RolelistGenerator {
 
         let vampireIndexCheck = rolelist.indexOf("Vampire");
         if (vampireIndexCheck == -1) {
-            let assortedTownies = ["Sheriff", "Lookout", "Investigator", "Spy", "Tracker", "Trapper"];
-
             let vampireHunterIndexCheck = rolelist.indexOf("Vampire Hunter");
             while (vampireHunterIndexCheck != -1) {
                 rolelist[vampireHunterIndexCheck] = this.generateRandomNonUnique();

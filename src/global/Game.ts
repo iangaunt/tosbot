@@ -4,7 +4,7 @@ import ServerRoleHandler from "../utils/backend/server/ServerRoleHandler";
 import TownBuilder from "../utils/backend/game/TownBuilder";
 import PlayerRoleHandler from "../utils/backend/game/PlayerRoleHandler";
 
-import { Client, Guild } from "discord.js";
+import { Client, Guild, GuildMember, TextChannel } from "discord.js";
 import ActionResponses from "../utils/backend/data/ActionResponses";
 import Player from "../utils/backend/classes/Player";
 
@@ -46,5 +46,17 @@ export default class Game {
      */
     static setRolelist(rolelist: Array<string>) {
         this.rolelist = rolelist;
+    }
+
+    static getChannel(channel: string): TextChannel {
+        return <TextChannel> Game.guild.channels.cache.get(channel);
+    }
+
+    static getRole(role: string): string {
+        return Game.serverRoleHandler.roles.get(role);
+    }
+
+    static getUser(userId: string): GuildMember {
+        return Game.guild.members.cache.get(userId)
     }
 }

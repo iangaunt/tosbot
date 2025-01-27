@@ -1,4 +1,19 @@
 {
+    "Doctor": {
+        "color": "0xDD0000",
+        "emoji": "<:doctor:1279841393040429119>",
+        "title": "Select someone to heal!",
+        "description": [
+            "**You clutch your first aid kit and adjust your cap, ready to face the horrors of war ...** \n \n",
+
+            "You can pick someone to heal and **grant them Powerful Defense** for the night. \n",
+            "You can heal any other person multiple times, except **yourself**. You can only self-heal **once**. \n",
+            "You will visit the target you choose to heal. If you self-heal, you will stay home. \n \n",
+
+            "*If you do not choose a target, you will stay home.*"
+        ]
+    },
+
     "Investigator": {
         "color": "0xDD0000",
         "emoji": "<:investigator:1279841410287141077>",

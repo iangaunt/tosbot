@@ -12,7 +12,8 @@
         "roles": [
             "Sheriff",
             "Mafioso",
-            "Investigator"
+            "Investigator",
+            "Doctor"
         ]
     },
     "classic": {
