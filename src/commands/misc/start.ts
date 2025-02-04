@@ -11,7 +11,7 @@ import Player from "../../utils/backend/classes/Player";
 import rolelists from "../../../public/roles/rolelists.json"
 import ActionResponses from "../../utils/backend/data/ActionResponses";
 import ResponseEmbed from "../../utils/visuals/embeds/ResponseEmbed";
-import DeathEmbed from "../../utils/visuals/embeds/DeathEmbed";
+import { DeathEmbed } from "../../utils/visuals/embeds/Embeds";
 
 /**
  * Starts a game of Town of Salem by rebuilding all of the properties of

@@ -3,7 +3,7 @@ import Player from "../classes/Player";
 
 import Game from "../../../global/Game";
 import RoleEmbed from "../../visuals/embeds/RoleEmbed";
-import BasicEmbed from "../../visuals/embeds/BasicEmbed";
+import { BasicEmbed } from "../../visuals/embeds/Embeds";
 
 export default class PlayerRoleHandler {
     guild: Guild;

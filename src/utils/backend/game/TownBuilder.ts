@@ -2,10 +2,7 @@ import { BaseMessageOptions, ChannelType, Guild, PermissionsBitField, TextChanne
 
 import Game from "../../../global/Game";
 import ChannelHandler from "../server/ChannelHandler";
-import DaytimeEmbed from "../../visuals/embeds/DaytimeEmbed";
-import NighttimeEmbed from "../../visuals/embeds/NighttimeEmbed";
-import BasicEmbed from "../../visuals/embeds/BasicEmbed";
-
+import { BasicEmbed, DaytimeEmbed, NighttimeEmbed } from "../../visuals/embeds/Embeds";
 export default class TownBuilder {
     createdChannels: Map<string, string>;
     guild: Guild;

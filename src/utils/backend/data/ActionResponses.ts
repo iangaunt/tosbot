@@ -3,6 +3,7 @@ import ResponseEmbed from "../../visuals/embeds/ResponseEmbed";
 import Player from "../classes/Player";
 
 export default class Responses {
+    // The Responses class requires no constructor.
     constructor() {};
 
     getResponse(player: Player, actionItemOne?: number, actionItemTwo?: number) {

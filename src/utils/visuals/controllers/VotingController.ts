@@ -2,6 +2,7 @@ import { ActionRowBuilder, BaseMessageOptions, ButtonBuilder, ButtonStyle } from
 import VotingEmbed from "../embeds/VotingEmbed";
 
 export default function VotingController(accused: string) {
+    // Adds the guilty, abstain, and innocent buttons.
     const guilty = new ButtonBuilder()
         .setCustomId("guilty")
         .setLabel("Guilty")
